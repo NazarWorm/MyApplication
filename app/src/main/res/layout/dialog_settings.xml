@@ -101,7 +101,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/btnMenuVolume"
+        android:id="@+id/btnMenuMute"
         android:layout_width="49dp"
         android:layout_height="48dp"
         android:scaleType="fitCenter"
