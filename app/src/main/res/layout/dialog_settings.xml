@@ -20,7 +20,7 @@
         android:id="@+id/sfxVolumeBar"
         android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
+        android:progress="100"
         app:layout_constraintEnd_toEndOf="@+id/masterVolumeBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/masterVolumeBar"
@@ -31,6 +31,7 @@
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
+        android:progress="100"
         app:layout_constraintStart_toStartOf="@+id/btnImgRemove"
         app:layout_constraintTop_toBottomOf="@+id/btnImgRemove" />
 
@@ -38,7 +39,7 @@
         android:id="@+id/menuVolumeBar"
         android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginTop="12dp"
+        android:progress="100"
         app:layout_constraintEnd_toEndOf="@+id/sfxVolumeBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/sfxVolumeBar"
@@ -51,6 +52,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:onClick="dialogOnClick"
         android:text="Reset"
         app:layout_constraintEnd_toStartOf="@+id/btnImgChange"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="64dp"
+        android:onClick="dialogOnClick"
         android:text="Change"
         app:layout_constraintBottom_toBottomOf="@+id/btnImgRemove"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,17 +76,18 @@
         android:id="@+id/btnResetScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
+        android:onClick="dialogOnClick"
         android:text="Reset High Score"
-        app:layout_constraintEnd_toStartOf="@+id/btnSave"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnMenuMute"
+        app:layout_constraintStart_toStartOf="@+id/menuVolumeBar"
         app:layout_constraintTop_toBottomOf="@+id/menuVolumeBar" />
 
     <ImageButton
         android:id="@+id/btnMasterMute"
         android:layout_width="49dp"
         android:layout_height="48dp"
+        android:onClick="dialogOnClick"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/btnImgChange"
         app:layout_constraintTop_toTopOf="@+id/masterVolumeBar"
@@ -94,6 +98,7 @@
         android:id="@+id/btnSFXMute"
         android:layout_width="49dp"
         android:layout_height="48dp"
+        android:onClick="dialogOnClick"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/btnMasterMute"
         app:layout_constraintTop_toTopOf="@+id/sfxVolumeBar"
@@ -104,6 +109,7 @@
         android:id="@+id/btnMenuMute"
         android:layout_width="49dp"
         android:layout_height="48dp"
+        android:onClick="dialogOnClick"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/btnSFXMute"
         app:layout_constraintTop_toTopOf="@+id/menuVolumeBar"
@@ -111,13 +117,26 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="dialogOnClick"
+        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="dialogOnClick"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnResetScore"
-        app:layout_constraintTop_toTopOf="@+id/btnResetScore" />
+        app:layout_constraintStart_toEndOf="@+id/btnReset"
+        app:layout_constraintTop_toBottomOf="@+id/btnResetScore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

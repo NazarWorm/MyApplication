@@ -11,4 +11,14 @@ public class Settings {
     public static int MENU_VOLUME = 100;
 
     public static int BEST_SCORE = 0;
+
+    public static void resetSettings(){
+        MASTER_VOLUME_MUTE = DefaultSettings.MASTER_VOLUME_MUTE;
+        SFX_VOLUME_MUTE = DefaultSettings.SFX_VOLUME_MUTE;
+        MENU_VOLUME_MUTE = DefaultSettings.MENU_VOLUME_MUTE;
+        MASTER_VOLUME = DefaultSettings.MASTER_VOLUME;
+        SFX_VOLUME = DefaultSettings.SFX_VOLUME;
+        MENU_VOLUME = DefaultSettings.MENU_VOLUME;
+    }
+
 }

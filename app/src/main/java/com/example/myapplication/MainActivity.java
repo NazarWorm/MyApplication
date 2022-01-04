@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.Toast;
-
-import com.google.android.material.slider.Slider;
-
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
@@ -54,18 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sfxVolumeBar = (SeekBar) d.findViewById(R.id.sfxVolumeBar);
         menuVolumeBar = (SeekBar) d.findViewById(R.id.menuVolumeBar);
 
-        //Setting Dialog Buttons OnClick
-        btnImgRemove.setOnClickListener(this::dialogOnClick);
-        btnImgChange.setOnClickListener(this::dialogOnClick);
-        btnResetScore.setOnClickListener(this::dialogOnClick);
-        btnSave.setOnClickListener(this::dialogOnClick);
-        btnMasterMute.setOnClickListener(this::dialogOnClick);
-        btnSFXMute.setOnClickListener(this::dialogOnClick);
-        btnMenuMute.setOnClickListener(this::dialogOnClick);
-
+        //Setting Dialog SeekBar Listener
         masterVolumeBar.setOnSeekBarChangeListener(this);
         sfxVolumeBar.setOnSeekBarChangeListener(this);
         menuVolumeBar.setOnSeekBarChangeListener(this);
+
+        //Setting SeekBar Progress To Current To Current Volume
+        masterVolumeBar.setProgress(Settings.MASTER_VOLUME);
+        sfxVolumeBar.setProgress(Settings.SFX_VOLUME);
+        menuVolumeBar.setProgress(Settings.MENU_VOLUME);
 
         //Showing Dialog
         d.show();
@@ -109,6 +100,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "Menu Volume Muted : " + Settings.MENU_VOLUME_MUTE, Toast.LENGTH_SHORT).show();
                 Log.d("VOLUME", "Menu");
                 break;
+            case R.id.btnSave:
+                d.hide();
+                break;
+            case R.id.btnReset:
+                Settings.resetSettings();
+                masterVolumeBar.setProgress(Settings.MASTER_VOLUME);
+                sfxVolumeBar.setProgress(Settings.SFX_VOLUME);
+                menuVolumeBar.setProgress(Settings.MENU_VOLUME);
+                break;
         }
     }
 
@@ -125,6 +125,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-
+        //Changing Volumes
+        switch (seekBar.getId()){
+            case R.id.masterVolumeBar:
+                Settings.MASTER_VOLUME = seekBar.getProgress();
+                break;
+            case R.id.sfxVolumeBar:
+                Settings.SFX_VOLUME = seekBar.getProgress();
+                break;
+            case R.id.menuVolumeBar:
+                Settings.MENU_VOLUME = seekBar.getProgress();
+                break;
+        }
     }
 }
