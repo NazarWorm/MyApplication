@@ -11,4 +11,5 @@ public class Settings {
     public static int MENU_VOLUME = 100;
 
     public static int BEST_SCORE = 0;
+    public static String PROFILE_PICTURE = "";
 }
